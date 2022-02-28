@@ -1,0 +1,400 @@
+Delivered-To: sauropoda@gmail.com
+Received: by 2002:a05:600c:26c5:0:0:0:0 with SMTP id 5csp1277333wmv;
+        Mon, 28 Feb 2022 11:01:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx6CnFlweMZeRFNS50AQS04FK2n4V8KryVFrRhtA5gJXr75k/TT+BHgGWcnPRWNMQeWyxAI
+X-Received: by 2002:ac2:5ec8:0:b0:443:3d7a:affe with SMTP id d8-20020ac25ec8000000b004433d7aaffemr13228548lfq.486.1646074879194;
+        Mon, 28 Feb 2022 11:01:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646074879; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SljOXGA3+XQbsX7hiS8UzsjSQFoXh5v7Ce91jCu1O8oMXtfPSC6K+njeu2zTZk+EUW
+         HhT0gknlwLMr8ZdzvJNBEFOrO8jlTijZOkUhpDZV0ASeVfgsdHZBrIGBjGcZCF64szX/
+         pvepjBNYx5emtF+olJ7ZQGgs08jPitUJ5/PQuQZuGFXmk4mL6eEXjvqkkz3Dy+oWm4gI
+         hrzjWp+7KKAlN5zjhulOUfBcEdnghbim9wL3DoaT77M5MHr6bAexYDm/XWXiN2SwO7QP
+         Hpa/pG6Aj7bh/WCeGrAoJkkrKrN/Tp5Xg15nEqdnTiuuVs993+Wj27aNIlJyDYoBfmv5
+         I5nQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:thread-index:mime-version:message-id:date:subject
+         :in-reply-to:references:cc:to:from:dkim-signature;
+        bh=l4U+pX2lX6y5rFizKcWtQs1xMMLpgGYIfXnOlc3w1nI=;
+        b=tNVDzRbSVGH1DCQEqdVvJ7QI3uc51+RZOqk4LwoxJLwOoOeaTTs0hH8O1HbqK0YgIJ
+         3uJ77D1YT2niMixnW36MU7Ajc9JivGu2wyv/EyUJo0WTIkIjCrSbb0W/sj5jvcV4XM5d
+         4qYgI8yL1+rimsa5JZYyXHziVNfFGlKGYnzV4mAepMUPfYKrgd61OYt0Yp2xGSWw1sDj
+         SAytZBTpVAvBprc4QUjBt1h9tJW79UfopvoqPx3jdPQ9fwUpMQ6fneboaNR/6AewJhTi
+         +EBBbalR7lVX+7f6CxaASdNpONR+i1PdPPOXW/thEJ9mGDLUVVoj7olYQX8XQDYPVF8Q
+         p4dg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@rescast.com header.s=default header.b=qrwfU5Up;
+       spf=pass (google.com: domain of pmay@rescast.com designates 74.220.205.144 as permitted sender) smtp.mailfrom=pmay@rescast.com
+Return-Path: <pmay@rescast.com>
+Received: from outbound-ss-747.hostmonster.com (outbound-ss-747.hostmonster.com. [74.220.205.144])
+        by mx.google.com with ESMTPS id f18-20020a05651c161200b0024631791d0dsi10235404ljq.621.2022.02.28.11.01.17
+        for <sauropoda@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Feb 2022 11:01:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of pmay@rescast.com designates 74.220.205.144 as permitted sender) client-ip=74.220.205.144;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@rescast.com header.s=default header.b=qrwfU5Up;
+       spf=pass (google.com: domain of pmay@rescast.com designates 74.220.205.144 as permitted sender) smtp.mailfrom=pmay@rescast.com
+Received: from cmgw11.mail.unifiedlayer.com (67-20-127-217.unifiedlayer.com [67.20.127.217])
+	by soproxy11.mail.unifiedlayer.com (Postfix) with ESMTP id 73CFE8029DF0
+	for <sauropoda@gmail.com>; Mon, 28 Feb 2022 19:01:07 +0000 (UTC)
+Received: from box2233.bluehost.com ([50.87.221.49])
+	by cmsmtp with ESMTP
+	id OlGdnl4vNwm8iOlGdnmULp; Mon, 28 Feb 2022 19:01:07 +0000
+X-Authority-Reason: ss=1
+X-Authority-Analysis: v=2.4 cv=DpSTREz+ c=1 sm=1 tr=0 ts=621d1bf3
+ a=pk+eZi4PKa6T7KTEnni3LA==:117 a=pk+eZi4PKa6T7KTEnni3LA==:17
+ a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=oGFeUVbbRNcA:10:nop_rcvd_month_year
+ a=wNIH7qrFY_gA:10:endurance_base64_authed_username_1 a=DAwyPP_o2Byb1YXLmDAA:9
+ a=pGLkceISAAAA:8 a=A2B8pjwWAAAA:8 a=3_oDfaefAAAA:8 a=gh22zWRxAAAA:8
+ a=zgkY2FBEAAAA:8 a=l-dYu2YoAAAA:8 a=H_CbGO1CAAAA:8 a=5JQEuE26T7WlXLz0lv8A:9
+ a=QEXdDO2ut3YA:10:nop_charset_2 a=xcRtpBD1rDkA:10:phone_number_3
+ a=MrXalwFUEuUA:10:phone_number_3 a=FY4a4McX1zQA:10:uccc_2email_address
+ a=yMhMjlubAAAA:8 a=SSmOFEACAAAA:8 a=AUd_NHdVAAAA:8 a=f--JELG_WaApIrrARzAA:9
+ a=MiWKeIVfTHMEOwoI:21 a=gKO2Hq4RSVkA:10:nop_mshtml
+ a=UiCQ7L4-1S4A:10:nop_mshtml_css_classes a=hTZeC7Yk6K0A:10:nop_msword_html
+ a=frz4AuCg-hUA:10:nop_css_in_html a=pIvuZ4jGGpoE8li81eAA:9
+ a=NpBoZI1VdvdAz84u:18 a=HXjIzolwW10A:10:nop_png
+ a=T6a71-JsGAwA:10:nop_attachment_filename_extension_2
+ a=YDRM5Q3VOEoNeqVmTCgA:9 a=KQqxNPgzF0kA:10:nop_jpg
+ a=VEiTNn8F7TgA:10:nop_attachment_filename_extension_2
+ a=iEoKo6VsdWLJxJMS3cwA:9 a=xOO6I0rhk1yErT3cvseP:22 a=O_TYfH3G3DSr2Va1vcVD:22
+ a=8bjXvSZCY4gd7a86OfhF:22 a=ack0tQ3M69UImAAqoO7Q:22 a=hEAwjlEJvkzOBcynoPzK:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rescast.com
+	; s=default; h=Content-Type:MIME-Version:Message-ID:Date:Subject:In-Reply-To:
+	References:Cc:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=l4U+pX2lX6y5rFizKcWtQs1xMMLpgGYIfXnOlc3w1nI=; b=qrwfU5UpQczfbNXz7myUd90OVT
+	e6bALAnEXFEOytYJGKS9qwbDNknSfLV9gwJfuBvu9FjfYFzcKIHHJUVKiMZorcCXvBziHsA9I+Ws6
+	VAs8GNCJXjF+TJwF15Z5Qh48kU5Tf8CRfsuuzj0wffVuzSFRA8kYXNDbhHhwa8xh3rVUJ5TxWtQt1
+	OlKFUUKDkgfwtQUzlFrZGhrOJivjwO5wbDbg5IgwsBAIKda4faWwAIUHsYxoPtgcPyiJdjPiMbJ0l
+	3sjkzPsof2gzcThziFD0h4h39m/8h0uBorezc11T0O/3cbRuhdur3u7gDDkt8JajU6I1RjQhXPR5X
+	FangL2MA==;
+Received: from d192-186-123-155.static.comm.cgocable.net ([192.186.123.155]:40595 helo=Alienware15)
+	by box2233.bluehost.com with esmtpa (Exim 4.94.2)
+	(envelope-from <pmay@rescast.com>)
+	id 1nOlGc-001v9N-6b; Mon, 28 Feb 2022 12:01:06 -0700
+From: <pmay@rescast.com>
+To: "'Mike Taylor'" <sauropoda@gmail.com>,
+	<gdallman@rescast.com>
+Cc: "'David Evans'" <davide@rom.on.ca>,
+	"'Mathew Wedel'" <mathew.wedel@gmail.com>
+References: <CACnMvBYzYSkZCTb6du3=zkN2kRqbjFwL0A=DfDFHO7D=foVTDw@mail.gmail.com> <!&!AAAAAAAAAAAuAAAAAAAAAKJGklmxj55CoGS25x+bqPsBAMO2jhD3dRHOtM0AqgC7tuYAAAAAAA4AABAAAADbhkE0OQ7gR6tD6foU9r7qAQAAAAA=@rescast.com> <015201d82ca9$aecceb70$0c66c250$@rescast.com> <CACnMvBYek_q0=gNzP5RoGtUmV22XzbKgUgq1ECim=CuaDDzd-w@mail.gmail.com> <01c001d82cb2$f01812e0$d04838a0$@rescast.com> <CACnMvBaVSccRFYi3BfTYS6nbdfVj9KED-QroH-keDO8r43jFQw@mail.gmail.com> <01f401d82cb4$9b7ff7a0$d27fe6e0$@rescast.com> <CACnMvBZbfDAOpdefg4D4R-1n_oTYESeH6ngvUhJ+LiwzAW_SzA@mail.gmail.com> <021601d82cb5$861bc820$92535860$@rescast.com> <CACnMvBbL49V8zz0TW0r6e7_JnSEYZEnGn-EsEa2tbJkq8oAZug@mail.gmail.com> <022901d82cb8$b55a0590$200e10b0$@rescast.com> <CACnMvBZQoHfCtdYXAoK0_yZ=KDz4vjZ=LjL32xTwLL-g2Q4L2A@mail.gmail.com>
+In-Reply-To: <CACnMvBZQoHfCtdYXAoK0_yZ=KDz4vjZ=LjL32xTwLL-g2Q4L2A@mail.gmail.com>
+Subject: RE: Composition of ROM Barosaurus Mount
+Date: Mon, 28 Feb 2022 14:01:02 -0500
+Message-ID: <023b01d82cd5$8a01ce60$9e056b20$@rescast.com>
+MIME-Version: 1.0
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQD4v7o3HNL3QcitIKGdT0kWrKoBpQFPXqMhAhA+yAwCUIp/ewFou9G9Aq1ZVooC2WYAFAFL/Bl6AXwYERkCQAfMtQKj323YAXSfSHOtuiBXQA==
+Content-Language: en-ca
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - box2233.bluehost.com
+X-AntiAbuse: Original Domain - gmail.com
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - rescast.com
+X-BWhitelist: no
+X-Source-IP: 192.186.123.155
+X-Source-L: No
+X-Exim-ID: 1nOlGc-001v9N-6b
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: d192-186-123-155.static.comm.cgocable.net (Alienware15) [192.186.123.155]:40595
+X-Source-Auth: pmay@rescast.com
+X-Email-Count: 1
+X-Source-Cap: cmNpcHJvZHU7cmNpcHJvZHU7Ym94MjIzMy5ibHVlaG9zdC5jb20=
+X-Local-Domain: yes
+Content-Type: text/plain; charset="utf-8"
+
+Hi Mike,
+
+Garth and I had a look through some old boxes and came up with a copy of Jack’s Barosaurus manuscript. In the attached photo you can see a note on the side which indicates for cervicals 1-7 we scaled up from AMNH 7535 a Barosaurus juvenile from Howe Quarry.
+
+ 
+
+We mounted the original cervicals of AMNH 7535 for the opening of the Barosaurus exhibit, they were in their own case on a brass support structure designed by Applebaum. I don’t think the display was up for long, the brass structure proved unstable and it was removed from exhibit
+
+Cheers,
+
+Peter
+
+ 
+
+From: Mike Taylor <sauropoda@gmail.com> 
+Sent: February 28, 2022 10:43 AM
+To: gdallman@rescast.com
+Cc: Peter May <pmay@rescast.com>; David Evans <davide@rom.on.ca>; Mathew Wedel <mathew.wedel@gmail.com>
+Subject: Re: Composition of ROM Barosaurus Mount
+
+ 
+
+Thanks, Garth; and hello, Peter!
+
+ 
+
+Now I am really fascinated -- because AMNH 6341 only preserves cervicals 8-16 (or 7-15 as they were thought to be before McIntosh's 2005 revision). And given how influential that amazing mount has been(*) in the popular understanding of Barosaurus, much rests on how the anterior seven (or six) cervicals were restored. Do you have any documentation on that? Or, failing that, personal recollections?
+
+ 
+
+Many thanks!
+
+ 
+
+-- Mike
+
+ 
+
+ 
+
+ 
+
+(*) Seriously, I'm not flattering when I call it "amazing". It's just about the most sensational single object I have ever seen. Only the Berlin brachiosaur rivals it.
+
+ 
+
+ 
+
+On Mon, Feb 28, 2022 at 3:36 PM <gdallman@rescast.com <mailto:gdallman@rescast.com> > wrote:
+
+I wouldn’t beat yourself over it! 
+
+Yes, we did the AMNH one as well. That was the first ever Barosaurus mount however this mount was before my time at RCI.  My understanding, and Peter can correct me on this, but it was all AMNH material. Barosaurus and Diplodocus to fill in. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: Mike Taylor <sauropoda@gmail.com <mailto:sauropoda@gmail.com> > 
+Sent: February 28, 2022 10:20 AM
+To: gdallman@rescast.com <mailto:gdallman@rescast.com> 
+Cc: Peter May <pmay@rescast.com <mailto:pmay@rescast.com> >; David Evans <davide@rom.on.ca <mailto:davide@rom.on.ca> >; Mathew Wedel <mathew.wedel@gmail.com <mailto:mathew.wedel@gmail.com> >
+Subject: Re: Composition of ROM Barosaurus Mount
+
+ 
+
+Now I feel even more humiliated about not having noticed the Carnegie cervicals!
+
+ 
+
+Thank you.
+
+ 
+
+Now I find myself wondering the obvious — whether you did the AMNH Barosaurus mount?
+
+ 
+
+-- Mike.
+
+ 
+
+ 
+
+On Mon, Feb 28, 2022 at 3:13 PM <gdallman@rescast.com <mailto:gdallman@rescast.com> > wrote:
+
+ 
+
+Exactly. You are correct.
+
+Garth
+
+ 
+
+From: Mike Taylor <sauropoda@gmail.com <mailto:sauropoda@gmail.com> > 
+Sent: February 28, 2022 10:10 AM
+To: gdallman@rescast.com <mailto:gdallman@rescast.com> 
+Cc: Peter May <pmay@rescast.com <mailto:pmay@rescast.com> >; David Evans <davide@rom.on.ca <mailto:davide@rom.on.ca> >; Mathew Wedel <mathew.wedel@gmail.com <mailto:mathew.wedel@gmail.com> >
+Subject: Re: Composition of ROM Barosaurus Mount
+
+ 
+
+Excellent! I have picked up the impression that that mount contains no original fossil material in the neck, nor casts made directly from fossils held by the Utah NHM -- but that the neck was copied from the ROM mount, which would mean that it has lots of Carnegie Diplodocus cervicals. Are you able to confirm or correct that?
+
+ 
+
+Thanks again,
+
+ 
+
+-- Mike.
+
+ 
+
+ 
+
+On Mon, Feb 28, 2022 at 3:07 PM <gdallman@rescast.com <mailto:gdallman@rescast.com> > wrote:
+
+Yes we did.
+
+ 
+
+From: Mike Taylor <sauropoda@gmail.com <mailto:sauropoda@gmail.com> > 
+Sent: February 28, 2022 10:05 AM
+To: gdallman@rescast.com <mailto:gdallman@rescast.com> 
+Cc: Peter May <pmay@rescast.com <mailto:pmay@rescast.com> >; David Evans <davide@rom.on.ca <mailto:davide@rom.on.ca> >; Mathew Wedel <mathew.wedel@gmail.com <mailto:mathew.wedel@gmail.com> >
+Subject: Re: Composition of ROM Barosaurus Mount
+
+ 
+
+Great, thanks! 
+
+ 
+
+BTW., did RCI also do the Barosaurus mount in the Natural History Museum of Utah?
+
+ 
+
+-- Mike.
+
+ 
+
+ 
+
+On Mon, Feb 28, 2022 at 2:55 PM <gdallman@rescast.com <mailto:gdallman@rescast.com> > wrote:
+
+Yes, of course.
+
+Garth
+
+ 
+
+From: Mike Taylor <sauropoda@gmail.com <mailto:sauropoda@gmail.com> > 
+Sent: February 28, 2022 9:06 AM
+To: gdallman@rescast.com <mailto:gdallman@rescast.com> 
+Cc: Peter May <pmay@rescast.com <mailto:pmay@rescast.com> >; David Evans <davide@rom.on.ca <mailto:davide@rom.on.ca> >; Mathew Wedel <mathew.wedel@gmail.com <mailto:mathew.wedel@gmail.com> >
+Subject: Re: Composition of ROM Barosaurus Mount
+
+ 
+
+Hi, Garth, thanks for getting back to me so quickly. I am a bit ashamed that I didn't recognise the Carnegie Diplodocus cervicals when I was at the ROM, but now looking at my photos it checks out.
+
+ 
+
+Would it be OK to cite this as a personal communication?
+
+ 
+
+Thanks again,
+
+ 
+
+-- Mike.
+
+ 
+
+ 
+
+On Mon, Feb 28, 2022 at 1:49 PM <gdallman@rescast.com <mailto:gdallman@rescast.com> > wrote:
+
+Hello Dr. Taylor,
+
+Yes,  we prepared and mounted the ROM 3670 Barosaurus. This mount was under the gun time wise and we had just moved our facility so there was a great deal going on at that time. I've been checking for working spreadsheets and examining mounting pictures of the cervical section. Your summation of the cervicals looks to be correct. You can tell the fossil vertebral specimens when viewing the mount as they will have armature supports running up the side of them. 
+
+I haven't found complete information yet on the mount in our database. Peter may have something in his personal files and if he has more information he will follow up. 
+
+We used the Carnegie Diplodocus molds from Dinolab to fill in the missing elements. 
+
+We'll follow up as more information comes to light.
+
+Best,
+
+Garth
+
+ 
+
+Garth Dallman
+
+Operations Coordinator
+
+ 
+
+
+
+15 Dufferin Ave.
+
+Trenton, ON. Canada. K8V 5C8
+
+Tel. : 613 394 7007
+
+Cell : 613 243 6095
+
+Email:  <mailto:gdallman@rescast.com> gdallman@rescast.com 
+
+Web: www.rescast.com 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+-----Original Message-----
+
+From: Mike Taylor < <mailto:sauropoda@gmail.com> sauropoda@gmail.com> 
+
+Sent: February 27, 2022 6:49 AM
+
+To:  <mailto:info@rescast.com> info@rescast.com
+
+Cc: Mathew Wedel < <mailto:mathew.wedel@gmail.com> mathew.wedel@gmail.com>; David Evans < <mailto:davide@rom.on.ca> davide@rom.on.ca>; David Evans < <mailto:d.evans@utoronto.ca> d.evans@utoronto.ca>
+
+Subject: Composition of ROM Barosaurus Moun
+
+ 
+
+Dear RCI,
+
+ 
+
+Together with Matt Wedel (who you know from your work in creating casts of Sauroposeidon), I am working on a paper about cervical vertebrae of Barosaurus.
+
+ 
+
+In this connection I've been in contact with David Evans of the Royal Ontario Museum regarding the cervical material in the skeletal mount of ROM 3670 which you prepared in (I think) 2007.
+
+ 
+
+Do you have records showing exactly what the composition of that mount was? Matt and I would find it useful to know exactly which cervical vertebrae are ROM fossils, and how the remaining cervicals were filled in. Signage in the public gallery suggests that three and a bit cervicals may be real, and that they are perhaps 16, 13, 12 and the back of 11, but I would rather know from a more concrete source. And would I be right in guessing that the missing vertebrae were copied from the AMNH mount?
+
+ 
+
+Many thanks,
+
+ 
+
+Dr. Michael P. Taylor
+
+Research Associate
+
+Department of Earth Sciences
+
+University of Bristol
+
+Bristol BS8 1RJ
+
+ENGLAND
+
+ <mailto:dino@miketaylor.org.uk> dino@miketaylor.org.uk
+
+ <http://svpow.com/> http://svpow.com/
+
+@MikeTaylor
+
+ <http://orcid.org/0000-0002-1003-5675> http://orcid.org/0000-0002-1003-5675
+
+ 
+
+
