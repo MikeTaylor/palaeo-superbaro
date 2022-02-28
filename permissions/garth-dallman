@@ -1,0 +1,685 @@
+Delivered-To: sauropoda@gmail.com
+Received: by 2002:a05:600c:26c5:0:0:0:0 with SMTP id 5csp1055338wmv;
+        Mon, 28 Feb 2022 06:55:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXRXgpFrXNVvmSCTp+T+HFHi9nACbz9kgMK6A7QZovwuv0rfkE5Zb7HBNfEM4SzpfDnLHO
+X-Received: by 2002:a17:90a:4f86:b0:1bd:b4d:339e with SMTP id q6-20020a17090a4f8600b001bd0b4d339emr13799165pjh.51.1646060125075;
+        Mon, 28 Feb 2022 06:55:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646060125; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RQE0uyNgZbycGG67zObxeH+3xQvogeqg2cZxOHEp2gAj0eNRDd+0pJTfK8l0IZaOrT
+         a1ERxj/BTRonFR7YfzLainKupNd7jzjBJbEaIfYeAw3RV26Qc5NGzLMYkWgkoQGVrvDM
+         9/EW+BV8ZbRlv/46eKoD4EffZi5+l2i7nvkDpUaHUuoSr8HUWjFGH5W6opf/9xT4Jbl/
+         N/qkdbaCbNhX3TqXT77CChWPsWXV5zMaVB/QetSJ091gaK+HZ44J3GisShH9mHmqrVuK
+         qAP1r/eLgdDbVkuefH3dY7xIHXqSP7QSGveE1b0YnMJepfEXZaaKX69vVx7ywNbys1/X
+         zKiw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:thread-index:mime-version:message-id:date:subject
+         :in-reply-to:references:cc:to:from:dkim-signature;
+        bh=7Bq/PVw+tVcsmZmcIROZfxNiAISIEHgfzOhMx4vXzhE=;
+        b=wVmAIJrYh6qIXlojvsprPojT/Wl6OBZdPCSKwSVm3FYUOTVE+ZOWJOlriBmeFzxLzi
+         UJOy27/xzMWAvwriC7logMHFuJ7hElf+gKL/aGHUlsNlLGboygZvuat+/BnS79iV6g+p
+         ICiuJ0z4LhZxcB0zLFtaKog9OuQxS+ClFXYIQMXQJdQT9PXuyuEOEgbnjhLMImm4ntuP
+         NQsIowHCks6NaDkh+b/s/7nMLpVCvgW1fqy0P469hXgEHcvQvZ9B8LSxT737HKKXh6J/
+         uCjeG0xGOr3af0hNu/qMLVwdWS7AAa7+AParU5caoPSRMKZb1qBOx7mwzYK/MrYjuoSj
+         5/3g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@rescast.com header.s=default header.b=FBuKdVsp;
+       spf=pass (google.com: domain of gdallman@rescast.com designates 67.222.59.132 as permitted sender) smtp.mailfrom=gdallman@rescast.com
+Return-Path: <gdallman@rescast.com>
+Received: from outbound-ss-1445.hostmonster.com ([67.222.59.132])
+        by mx.google.com with ESMTPS id s21-20020a63ff55000000b003744b1576e2si9130318pgk.334.2022.02.28.06.55.24
+        for <sauropoda@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Feb 2022 06:55:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of gdallman@rescast.com designates 67.222.59.132 as permitted sender) client-ip=67.222.59.132;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@rescast.com header.s=default header.b=FBuKdVsp;
+       spf=pass (google.com: domain of gdallman@rescast.com designates 67.222.59.132 as permitted sender) smtp.mailfrom=gdallman@rescast.com
+Received: from cmgw12.mail.unifiedlayer.com (67-20-127-218.unifiedlayer.com [67.20.127.218])
+	by soproxy3.mail.unifiedlayer.com (Postfix) with ESMTP id 2F4C2803407C
+	for <sauropoda@gmail.com>; Mon, 28 Feb 2022 14:55:24 +0000 (UTC)
+Received: from box2233.bluehost.com ([50.87.221.49])
+	by cmsmtp with ESMTP
+	id OhQqn8HGEctgJOhQqnBdE4; Mon, 28 Feb 2022 14:55:24 +0000
+X-Authority-Reason: ss=1
+X-Authority-Analysis: v=2.4 cv=Oq2Kdwzt c=1 sm=1 tr=0 ts=621ce25c
+ a=pk+eZi4PKa6T7KTEnni3LA==:117 a=pk+eZi4PKa6T7KTEnni3LA==:17
+ a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19 a=oGFeUVbbRNcA:10:nop_rcvd_month_year
+ a=wNIH7qrFY_gA:10:endurance_base64_authed_username_1 a=DAwyPP_o2Byb1YXLmDAA:9
+ a=pGLkceISAAAA:8 a=A2B8pjwWAAAA:8 a=3_oDfaefAAAA:8 a=gh22zWRxAAAA:8
+ a=zgkY2FBEAAAA:8 a=l-dYu2YoAAAA:8 a=H_CbGO1CAAAA:8 a=BIJwkA5JSUmF7fQfIt4A:9
+ a=QEXdDO2ut3YA:10:nop_charset_2 a=xcRtpBD1rDkA:10:phone_number_3
+ a=MrXalwFUEuUA:10:phone_number_3 a=FY4a4McX1zQA:10:uccc_2email_address
+ a=yMhMjlubAAAA:8 a=SSmOFEACAAAA:8 a=AUd_NHdVAAAA:8 a=ALhVwdNmtNmnw6V8d10A:9
+ a=b6cFohod0OqXlYz7:21 a=gKO2Hq4RSVkA:10:nop_mshtml
+ a=UiCQ7L4-1S4A:10:nop_mshtml_css_classes a=hTZeC7Yk6K0A:10:nop_msword_html
+ a=frz4AuCg-hUA:10:nop_css_in_html a=pIvuZ4jGGpoE8li81eAA:9
+ a=NpBoZI1VdvdAz84u:18 a=HXjIzolwW10A:10:nop_png
+ a=T6a71-JsGAwA:10:nop_attachment_filename_extension_2
+ a=xOO6I0rhk1yErT3cvseP:22 a=O_TYfH3G3DSr2Va1vcVD:22 a=8bjXvSZCY4gd7a86OfhF:22
+ a=ack0tQ3M69UImAAqoO7Q:22 a=hEAwjlEJvkzOBcynoPzK:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rescast.com
+	; s=default; h=Content-Type:MIME-Version:Message-ID:Date:Subject:In-Reply-To:
+	References:Cc:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=7Bq/PVw+tVcsmZmcIROZfxNiAISIEHgfzOhMx4vXzhE=; b=FBuKdVsp6kM8ecc3V8nxggzIk3
+	rCL95/s2NqEutZ2FO5Efcyf4UeRqwUnrV/9LcVS1rf1xCAVp210DyOr24qP2dw9DWYYhTJONLw4F7
+	D5afyMIy8y0F6enCwtET3N2YE0mdSDUwWz1uGbGRY5ZqSmmFF4HujddLrUOLPBa/M6dO50n/AlIXV
+	gaIyG1z9fFpn38X4xtIykSAntvEaNBO/+xIBF0sMrqQfZAfn4+vbz04uGiGa5SXas0a+C6hHFmqch
+	ejBfhOzLtjCXhdVTVd3OSuuOtTVwlB2m6ccVc52EzQoyCmRynq/opZRDp6ctcxmxNa3hvOE7Sp8ce
+	4Mf9668Q==;
+Received: from d192-186-123-155.static.comm.cgocable.net ([192.186.123.155]:22428 helo=LAPTOP40V0ACNB)
+	by box2233.bluehost.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <gdallman@rescast.com>)
+	id 1nOhQp-003Nr7-JY; Mon, 28 Feb 2022 07:55:23 -0700
+From: <gdallman@rescast.com>
+To: "'Mike Taylor'" <sauropoda@gmail.com>
+Cc: "'Peter May'" <pmay@rescast.com>,
+	"'David Evans'" <davide@rom.on.ca>,
+	"'Mathew Wedel'" <mathew.wedel@gmail.com>
+References: <CACnMvBYzYSkZCTb6du3=zkN2kRqbjFwL0A=DfDFHO7D=foVTDw@mail.gmail.com> <!&!AAAAAAAAAAAuAAAAAAAAAKJGklmxj55CoGS25x+bqPsBAMO2jhD3dRHOtM0AqgC7tuYAAAAAAA4AABAAAADbhkE0OQ7gR6tD6foU9r7qAQAAAAA=@rescast.com> <015201d82ca9$aecceb70$0c66c250$@rescast.com> <CACnMvBYek_q0=gNzP5RoGtUmV22XzbKgUgq1ECim=CuaDDzd-w@mail.gmail.com>
+In-Reply-To: <CACnMvBYek_q0=gNzP5RoGtUmV22XzbKgUgq1ECim=CuaDDzd-w@mail.gmail.com>
+Subject: RE: Composition of ROM Barosaurus Mount
+Date: Mon, 28 Feb 2022 09:53:23 -0500
+Message-ID: <01c001d82cb2$f01812e0$d04838a0$@rescast.com>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_01C1_01D82C89.07434360"
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQD4v7o3HNL3QcitIKGdT0kWrKoBpQFPXqMhAhA+yAwCUIp/e646YwqA
+Content-Language: en-ca
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - box2233.bluehost.com
+X-AntiAbuse: Original Domain - gmail.com
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - rescast.com
+X-BWhitelist: no
+X-Source-IP: 192.186.123.155
+X-Source-L: No
+X-Exim-ID: 1nOhQp-003Nr7-JY
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: d192-186-123-155.static.comm.cgocable.net (LAPTOP40V0ACNB) [192.186.123.155]:22428
+X-Source-Auth: gdallman@rescast.com
+X-Email-Count: 30
+X-Source-Cap: cmNpcHJvZHU7cmNpcHJvZHU7Ym94MjIzMy5ibHVlaG9zdC5jb20=
+X-Local-Domain: yes
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_01C1_01D82C89.07434360
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_01C2_01D82C89.07436A70"
+
+
+------=_NextPart_001_01C2_01D82C89.07436A70
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Yes, of course.
+
+Garth
+
+=20
+
+From: Mike Taylor <sauropoda@gmail.com>=20
+Sent: February 28, 2022 9:06 AM
+To: gdallman@rescast.com
+Cc: Peter May <pmay@rescast.com>; David Evans <davide@rom.on.ca>; Mathew =
+Wedel <mathew.wedel@gmail.com>
+Subject: Re: Composition of ROM Barosaurus Mount
+
+=20
+
+Hi, Garth, thanks for getting back to me so quickly. I am a bit ashamed =
+that I didn't recognise the Carnegie Diplodocus cervicals when I was at =
+the ROM, but now looking at my photos it checks out.
+
+=20
+
+Would it be OK to cite this as a personal communication?
+
+=20
+
+Thanks again,
+
+=20
+
+-- Mike.
+
+=20
+
+=20
+
+On Mon, Feb 28, 2022 at 1:49 PM <gdallman@rescast.com =
+<mailto:gdallman@rescast.com> > wrote:
+
+Hello Dr. Taylor,
+
+Yes,  we prepared and mounted the ROM 3670 Barosaurus. This mount was =
+under the gun time wise and we had just moved our facility so there was =
+a great deal going on at that time. I've been checking for working =
+spreadsheets and examining mounting pictures of the cervical section. =
+Your summation of the cervicals looks to be correct. You can tell the =
+fossil vertebral specimens when viewing the mount as they will have =
+armature supports running up the side of them.=20
+
+I haven't found complete information yet on the mount in our database. =
+Peter may have something in his personal files and if he has more =
+information he will follow up.=20
+
+We used the Carnegie Diplodocus molds from Dinolab to fill in the =
+missing elements.=20
+
+We'll follow up as more information comes to light.
+
+Best,
+
+Garth
+
+=20
+
+Garth Dallman
+
+Operations Coordinator
+
+=20
+
+
+
+15 Dufferin Ave.
+
+Trenton, ON. Canada. K8V 5C8
+
+Tel. : 613 394 7007
+
+Cell : 613 243 6095
+
+Email:  <mailto:gdallman@rescast.com> gdallman@rescast.com=20
+
+Web: www.rescast.com=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+=20
+
+-----Original Message-----
+
+From: Mike Taylor < <mailto:sauropoda@gmail.com> sauropoda@gmail.com>=20
+
+Sent: February 27, 2022 6:49 AM
+
+To:  <mailto:info@rescast.com> info@rescast.com
+
+Cc: Mathew Wedel < <mailto:mathew.wedel@gmail.com> =
+mathew.wedel@gmail.com>; David Evans < <mailto:davide@rom.on.ca> =
+davide@rom.on.ca>; David Evans < <mailto:d.evans@utoronto.ca> =
+d.evans@utoronto.ca>
+
+Subject: Composition of ROM Barosaurus Moun
+
+=20
+
+Dear RCI,
+
+=20
+
+Together with Matt Wedel (who you know from your work in creating casts =
+of Sauroposeidon), I am working on a paper about cervical vertebrae of =
+Barosaurus.
+
+=20
+
+In this connection I've been in contact with David Evans of the Royal =
+Ontario Museum regarding the cervical material in the skeletal mount of =
+ROM 3670 which you prepared in (I think) 2007.
+
+=20
+
+Do you have records showing exactly what the composition of that mount =
+was? Matt and I would find it useful to know exactly which cervical =
+vertebrae are ROM fossils, and how the remaining cervicals were filled =
+in. Signage in the public gallery suggests that three and a bit =
+cervicals may be real, and that they are perhaps 16, 13, 12 and the back =
+of 11, but I would rather know from a more concrete source. And would I =
+be right in guessing that the missing vertebrae were copied from the =
+AMNH mount?
+
+=20
+
+Many thanks,
+
+=20
+
+Dr. Michael P. Taylor
+
+Research Associate
+
+Department of Earth Sciences
+
+University of Bristol
+
+Bristol BS8 1RJ
+
+ENGLAND
+
+ <mailto:dino@miketaylor.org.uk> dino@miketaylor.org.uk
+
+ <http://svpow.com/> http://svpow.com/
+
+@MikeTaylor
+
+ <http://orcid.org/0000-0002-1003-5675> =
+http://orcid.org/0000-0002-1003-5675
+
+=20
+
+
+------=_NextPart_001_01C2_01D82C89.07436A70
+Content-Type: text/html;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
+xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta =
+http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8"><meta =
+name=3DGenerator content=3D"Microsoft Word 15 (filtered medium)"><!--[if =
+!mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+p.gmail-m7070916662399081620msoplaintext, =
+li.gmail-m7070916662399081620msoplaintext, =
+div.gmail-m7070916662399081620msoplaintext
+	{mso-style-name:gmail-m_7070916662399081620msoplaintext;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle20
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style></head><body lang=3DEN-CA link=3Dblue vlink=3Dpurple =
+style=3D'word-wrap:break-word'><div class=3DWordSection1><p =
+class=3DMsoNormal><span style=3D'mso-fareast-language:EN-US'>Yes, of =
+course.<o:p></o:p></span></p><p class=3DMsoNormal><span =
+style=3D'mso-fareast-language:EN-US'>Garth<o:p></o:p></span></p><p =
+class=3DMsoNormal><span =
+style=3D'mso-fareast-language:EN-US'><o:p>&nbsp;</o:p></span></p><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm'><p class=3DMsoNormal><b><span =
+lang=3DEN-US>From:</span></b><span lang=3DEN-US> Mike Taylor =
+&lt;sauropoda@gmail.com&gt; <br><b>Sent:</b> February 28, 2022 9:06 =
+AM<br><b>To:</b> gdallman@rescast.com<br><b>Cc:</b> Peter May =
+&lt;pmay@rescast.com&gt;; David Evans &lt;davide@rom.on.ca&gt;; Mathew =
+Wedel &lt;mathew.wedel@gmail.com&gt;<br><b>Subject:</b> Re: Composition =
+of ROM Barosaurus Mount<o:p></o:p></span></p></div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><div><div><p =
+class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'>Hi, Garth, =
+thanks&nbsp;for getting back to me so quickly. I am a bit =
+ashamed&nbsp;that&nbsp;I didn't recognise the Carnegie Diplodocus =
+cervicals when I was at the ROM, but now looking&nbsp;at my photos it =
+checks out.<o:p></o:p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:=
+p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'>Would it be OK =
+to cite this as a personal =
+communication?<o:p></o:p></span></p></div><div><p =
+class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:=
+p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'>Thanks =
+again,<o:p></o:p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:=
+p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'>-- =
+Mike.<o:p></o:p></span></p></div><div><p class=3DMsoNormal><span =
+style=3D'font-size:12.0pt;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:=
+p></span></p></div></div><p =
+class=3DMsoNormal><o:p>&nbsp;</o:p></p><div><div><p class=3DMsoNormal>On =
+Mon, Feb 28, 2022 at 1:49 PM &lt;<a =
+href=3D"mailto:gdallman@rescast.com">gdallman@rescast.com</a>&gt; =
+wrote:<o:p></o:p></p></div><blockquote =
+style=3D'border:none;border-left:solid #CCCCCC 1.0pt;padding:0cm 0cm 0cm =
+6.0pt;margin-left:4.8pt;margin-right:0cm'><div><div><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Hello Dr. =
+Taylor,<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Yes, &nbsp;we prepared =
+and mounted the ROM 3670 Barosaurus. This mount was under the gun time =
+wise and we had just moved our facility so there was a great deal going =
+on at that time. I've been checking for working spreadsheets and =
+examining mounting pictures of the cervical section. Your summation of =
+the cervicals looks to be correct. You can tell the fossil vertebral =
+specimens when viewing the mount as they will have armature supports =
+running up the side of them. <o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>I haven't found complete =
+information yet on the mount in our database. Peter may have something =
+in his personal files and if he has more information he will follow up. =
+<o:p></o:p></p><p class=3Dgmail-m7070916662399081620msoplaintext>We used =
+the Carnegie Diplodocus molds from Dinolab to fill in the missing =
+elements. <o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>We'll follow up as more =
+information comes to light.<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Best,<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Garth<o:p></o:p></p><p =
+class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>&nbsp;<o:p><=
+/o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><b><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>Ga=
+rth Dallman</span></b><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>Op=
+erations Coordinator</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>&n=
+bsp;</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+lang=3DEN-US><img border=3D0 width=3D203 height=3D70 =
+style=3D'width:2.1166in;height:.725in' =
+id=3D"gmail-m_7070916662399081620Picture_x0020_3" =
+src=3D"cid:image001.png@01D82C88.6392A940"></span><o:p></o:p></p><p =
+class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>15=
+ Dufferin Ave.</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>Tr=
+enton, ON. Canada. K8V 5C8</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>Te=
+l. : 613 394 7007</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#767171'>Ce=
+ll : 613 243 6095</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#1F497D'>Em=
+ail: </span><span lang=3DEN-US><a href=3D"mailto:gdallman@rescast.com" =
+target=3D"_blank"><span lang=3DEN-CA =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif'>gdallman@rescast=
+.com</span></a></span><span lang=3DEN-US =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#1F497D'> =
+</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#1F497D'>We=
+b: </span><span lang=3DEN-US><a =
+href=3D"http://secure-web.cisco.com/1JwLjWV3MXrP2c2EOxlQA48f7YCGS0UUOxa2o=
+v-P0FeG0GFwf9p-QSTZJt8eBf_lpu0uBRGRV6mNoXZnNg7s3zIQNhHi04mGjOja_wCEg9E7Xa=
+_gQSkgkkK6w0g1BC34sVwJRzUf3tpXs7kkXkmr1u1rK17WXay06njQorGuvgMnDRE3gIHmQZN=
+uHG8nzBrJZy39i3wLdWrntVcs6XxeuyB7Q5vhlmFHxRm6MChq_9bHUnyMt3kPxZPl-Int_eel=
+NGYhJNppW15T9LLYIaEEoC_c6aQF8id90E-EYhO8rMKUYLkuT0_5N4Tob5qySaeJqJjNb09XR=
+xgPjleHmeNaieqleVabiCymkxO4WSNpP8CnIpAJffIYAuews9E1xkfEiRjpDjceXKdpiv7Fu4=
+9Flg2kjQ-CBUbQE2ZtSl1P_kGu6njTky0sY4SlxPkOvquZun-d4Db-t0JgKwRUf_zOVrw/htt=
+p%3A%2F%2Fwww.rescast.com%2F" target=3D"_blank"><span lang=3DEN-CA =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif'>www.rescast.com<=
+/span></a></span><span lang=3DEN-US =
+style=3D'font-size:9.0pt;font-family:"Arial",sans-serif;color:#1F497D'> =
+</span><o:p></o:p></p><p class=3DMsoNormal =
+style=3D'mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>&nbsp;<o:p><=
+/o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>-----Original =
+Message-----<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>From: Mike Taylor &lt;<a =
+href=3D"mailto:sauropoda@gmail.com" target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>sauropoda@gmail.com</span=
+></a>&gt; <o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Sent: February 27, 2022 =
+6:49 AM<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>To: <a =
+href=3D"mailto:info@rescast.com" target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>info@rescast.com</span></=
+a><o:p></o:p></p><p class=3Dgmail-m7070916662399081620msoplaintext>Cc: =
+Mathew Wedel &lt;<a href=3D"mailto:mathew.wedel@gmail.com" =
+target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>mathew.wedel@gmail.com</s=
+pan></a>&gt;; David Evans &lt;<a href=3D"mailto:davide@rom.on.ca" =
+target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>davide@rom.on.ca</span></=
+a>&gt;; David Evans &lt;<a href=3D"mailto:d.evans@utoronto.ca" =
+target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>d.evans@utoronto.ca</span=
+></a>&gt;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Subject: Composition of =
+ROM Barosaurus Moun<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Dear =
+RCI,<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Together with Matt Wedel =
+(who you know from your work in creating casts of Sauroposeidon), I am =
+working on a paper about cervical vertebrae of =
+Barosaurus.<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>In this connection I've =
+been in contact with David Evans of the Royal Ontario Museum regarding =
+the cervical material in the skeletal mount of ROM 3670 which you =
+prepared in (I think) 2007.<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Do you have records =
+showing exactly what the composition of that mount was? Matt and I would =
+find it useful to know exactly which cervical vertebrae are ROM fossils, =
+and how the remaining cervicals were filled in. Signage in the public =
+gallery suggests that three and a bit cervicals may be real, and that =
+they are perhaps 16, 13, 12 and the back of 11, but I would rather know =
+from a more concrete source. And would I be right in guessing that the =
+missing vertebrae were copied from the AMNH mount?<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Many =
+thanks,<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Dr. Michael P. =
+Taylor<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Research =
+Associate<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Department of Earth =
+Sciences<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>University of =
+Bristol<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>Bristol BS8 =
+1RJ<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>ENGLAND<o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext><a =
+href=3D"mailto:dino@miketaylor.org.uk" target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>dino@miketaylor.org.uk</s=
+pan></a><o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext><a =
+href=3D"http://svpow.com/" target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>http://svpow.com/</span><=
+/a><o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>@MikeTaylor<o:p></o:p></p>=
+<p class=3Dgmail-m7070916662399081620msoplaintext><a =
+href=3D"http://orcid.org/0000-0002-1003-5675" target=3D"_blank"><span =
+style=3D'color:windowtext;text-decoration:none'>http://orcid.org/0000-000=
+2-1003-5675</span></a><o:p></o:p></p><p =
+class=3Dgmail-m7070916662399081620msoplaintext>&nbsp;<o:p></o:p></p></div=
+></div></blockquote></div></div></body></html>
+------=_NextPart_001_01C2_01D82C89.07436A70--
+
+------=_NextPart_000_01C1_01D82C89.07434360
+Content-Type: image/png;
+	name="image001.png"
+Content-Transfer-Encoding: base64
+Content-ID: <image001.png@01D82C88.6392A940>
+
+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
+QmCCAA==
+
+------=_NextPart_000_01C1_01D82C89.07434360--
+
