@@ -1,0 +1,215 @@
+Delivered-To: sauropoda@gmail.com
+Received: by 2002:a05:600c:26c5:0:0:0:0 with SMTP id 5csp499758wmv;
+        Sun, 27 Feb 2022 16:31:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxdMhDbyrReVMjvb50uRiiSXVzvVfvO0EXD5bAOcmk5TJKkuM4fsKPCOMoSAwe0s3dX/Mzw
+X-Received: by 2002:a17:903:4115:b0:151:34d0:6717 with SMTP id r21-20020a170903411500b0015134d06717mr13079099pld.169.1646008278684;
+        Sun, 27 Feb 2022 16:31:18 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1646008278; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=eMYntBEkstVLpFmVif3GgkeWDC+WiJJYvl/XmopQX2At3A7UXZPGMR/AkSpSdw1Z1r
+         NJFWUEVUiAjbKNlefMD4Mg99OuAiwFXtodYyAxZdas4lOYG52lBNzIho+Cxt5pWcEHvS
+         YnJSKpz3Hj7e/EAbovDTljkDPJgz8CU7SZfsRs4CvHltMgfxW5wNn+5YQsghcL1jdMCY
+         9QAtLmxlLSaLLD27M/mPjbOKA12xQwAWydNXlyeIRw6J0RP79oCg5wB5oo608dBDIk8v
+         9T2Zd7fglNreQtW+zz/F86qtn019IS/mvsejbm3mAbsLYdrNLuB0GWS94PNDrQSTIPiZ
+         OAcw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding
+         :suggested_attachment_session_id:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=YZJDLU+kW2sPmgIGc0KCglewHsWRrk1rLgQgqT8cE7I=;
+        b=axkw7wek3t7tiYCTzTIKnEQtw/I9z6NwDUm6hV0g5a05GjrqX8Xr/awqocvUTPXccX
+         /5NpTUWjfSv9qNiGX9j7zW8CzD3cCT6gjTyRl7Y8XDWAuBAinyZTpAKosuw2Kg8F/diR
+         BTXD0YrZQU0d5blG4AC6mmhtIe86s6VRllOUO02VIzKZ30pQLVHYLV0xHb9p2LHTg+VJ
+         9Bfw/DKi+TdrhY+SDxw255EtdWahupUrAhy8IN7bxa574oSOxcDoQYKlwNFQafAY7iXI
+         uMRFTxoleDvRrIFg+MTOPacZ5RYW/F/+IQtNRXvfcDxYS17ASro4jMSxVGahFZhhav9v
+         OXTQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@utah.edu header.s=UniversityOfUtah header.b=QpByJThS;
+       dkim=pass header.i=@UofUtah.onmicrosoft.com header.s=selector2-UofUtah-onmicrosoft-com header.b=lu0zcsZF;
+       arc=pass (i=1 spf=pass spfdomain=umnh.utah.edu dkim=pass dkdomain=umnh.utah.edu dmarc=pass fromdomain=umnh.utah.edu);
+       spf=pass (google.com: best guess record for domain of irmis@umnh.utah.edu designates 155.97.144.42 as permitted sender) smtp.mailfrom=irmis@umnh.utah.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=utah.edu
+Return-Path: <irmis@umnh.utah.edu>
+Received: from ipo7.cc.utah.edu (ipo7.cc.utah.edu. [155.97.144.42])
+        by mx.google.com with ESMTPS id i1-20020a170902cf0100b0014fe2ca91a1si8145887plg.12.2022.02.27.16.31.17
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 27 Feb 2022 16:31:18 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of irmis@umnh.utah.edu designates 155.97.144.42 as permitted sender) client-ip=155.97.144.42;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@utah.edu header.s=UniversityOfUtah header.b=QpByJThS;
+       dkim=pass header.i=@UofUtah.onmicrosoft.com header.s=selector2-UofUtah-onmicrosoft-com header.b=lu0zcsZF;
+       arc=pass (i=1 spf=pass spfdomain=umnh.utah.edu dkim=pass dkdomain=umnh.utah.edu dmarc=pass fromdomain=umnh.utah.edu);
+       spf=pass (google.com: best guess record for domain of irmis@umnh.utah.edu designates 155.97.144.42 as permitted sender) smtp.mailfrom=irmis@umnh.utah.edu;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=utah.edu
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=utah.edu; i=@utah.edu; q=dns/txt; s=UniversityOfUtah;
+  t=1646008279; x=1677544279;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=GEozvxRqKfe1VxrA7cocGVlqIig6YKu3xnmQeH+socw=;
+  b=QpByJThSSBuaZi3ZuIU8mTw6K6cJt/A01XwX2mg4u9E9hlgiptIC5PLA
+   BPxwpxEFumqT+QbD0XOC35Y2C3BpKlvVJKqR35I0rq4d6qjQoKCZWLH/A
+   0FlmF5LCIxpsyHTo4oJMljyC5wgpp+yck5yadye8j6IOlMAQSWI0RA97h
+   daABVwMuGy0/9rhsPh9my0hcab/eaxgNMXXW4A1AXzYdobVVyvJrXWoIv
+   TUYH4dSDUnEDz35xU8NWD/jQwuGyygR5heuDLa271tF3xDeX6iucGyumU
+   geV79Q+p2+ggeDcjTmm5lHpabnuLB9yfRzKV/C05rSRMt+5nZzaPr7v7x
+   A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10271"; a="173397621"
+X-IronPort-AV: E=Sophos;i="5.90,142,1643698800"; 
+   d="scan'208";a="173397621"
+Received: from iso-dlpep-p02.iso.utah.edu ([10.71.25.162])
+  by ipo7smtp.cc.utah.edu with ESMTP; 27 Feb 2022 17:31:18 -0700
+Received: from iso-dlpep-p02.iso.utah.edu (iso-dlpep-p02.iso.utah.edu [127.0.0.1])
+	by iso-dlpep-p02.iso.utah.edu (Service) with ESMTP id 45039400F4C6;
+	Sun, 27 Feb 2022 17:31:16 -0700 (MST)
+Received: from UMAILX-M201.xds.umail.utah.edu (unknown [172.31.233.10])
+	by iso-dlpep-p02.iso.utah.edu (Service) with ESMTP id 24BE4400F750;
+	Sun, 27 Feb 2022 17:31:16 -0700 (MST)
+Received: from UMAILX-M201.xds.umail.utah.edu (155.97.144.201) by
+ UMAILX-M201.xds.umail.utah.edu (155.97.144.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.18; Sun, 27 Feb 2022 17:32:13 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.103)
+ by UMAILX-M201.xds.umail.utah.edu (155.97.144.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.18 via Frontend Transport; Sun, 27 Feb 2022 17:32:13 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RkqHlfE11NJLtG0UiQL4oIPrs9UV5IgbGSbjKH9Y5dFLqQNGUEcrKNt/sjVPisa0sJya2XpvLL0yhtvQdIvew6mQXXBrqQZg69D3Qq7C5+zIlZSNi/xmDsr2q39/7qgqqL+IxzBe19264bCgLv49eBZFHgiFouBLrX1jOOfSk0LuKmKDxUSFT9ry+1zl7TLpo5dOGVWS59JVAf00THwfna7mBL7rto6a2nBOLv2hrmlSThz0PI0Te/tdKAA4oyKNpKOaJb0TmjKKi1ywXOwv8mIciZRAZ2Zhr5FBzXiWYdVM125IZ2YrSTS3B4dN4BSPpRysQ9V83rywhERPyUFpWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YZJDLU+kW2sPmgIGc0KCglewHsWRrk1rLgQgqT8cE7I=;
+ b=ecmHN++MC27AZrz5uAU7uAbr0JDdALBysmNzQtnDYPfB0y8suPbzmFvNxl681Y8ITIfcKw737XDg9eaBQyIwaeFvg2eEOmJsNjaF4dBjoJJpRGEzkNLfRER50RC3cG9SHoXwRiHz7SVDXpBOg5/36WdVVsAr5lBErQPjHqC8wiGq3p7nX98J9HpeT3uDlx0D0TWB+XL6QA/XJfXBTheq5Kz8z8WUqo4cJuUDdMSASRglYa6Q5+xzoS0JfeK/enBo4iS4NyfP+8OW5o39+crvyx7K3IdBK56YgXCFobxPd4b2CWAMcls+cu3GbF8hqi9F6vLIiBrF5tlh5ZdFEOU/yg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=umnh.utah.edu; dmarc=pass action=none
+ header.from=umnh.utah.edu; dkim=pass header.d=umnh.utah.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=UofUtah.onmicrosoft.com; s=selector2-UofUtah-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YZJDLU+kW2sPmgIGc0KCglewHsWRrk1rLgQgqT8cE7I=;
+ b=lu0zcsZFZR7lHPxGEoDAF4hFo/4qIFrI+JxTVgTB3z1Ssg7paDsQH0K3By8LeJcst/cczCkqMAq/TCIcLW3OfgtkiXJPZUQim4AnvvviAo2DZ+6AFM817vvStap5j5PvGti3Oc+OQgTo0kPYQYIHAYp91IQ8018LWYkQEJacZnw=
+Received: from BY5PR11MB4403.namprd11.prod.outlook.com (2603:10b6:a03:1ba::32)
+ by MWHPR11MB1389.namprd11.prod.outlook.com (2603:10b6:300:26::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Mon, 28 Feb
+ 2022 00:31:15 +0000
+Received: from BY5PR11MB4403.namprd11.prod.outlook.com
+ ([fe80::d874:3d55:b1f6:4cf0]) by BY5PR11MB4403.namprd11.prod.outlook.com
+ ([fe80::d874:3d55:b1f6:4cf0%5]) with mapi id 15.20.5017.026; Mon, 28 Feb 2022
+ 00:31:15 +0000
+From: Randy Irmis <irmis@umnh.utah.edu>
+To: Mike Taylor <sauropoda@gmail.com>
+CC: Mathew Wedel <mathew.wedel@gmail.com>, Carrie Levitt-Bussian
+	<clevitt@nhmu.utah.edu>
+Subject: Re: Thank you!
+Thread-Topic: Thank you!
+Thread-Index: AQHRr8PXTwK/xGMZYU+91DyZ7sutpZ+9FZgAjPTIHoCAAAEWhYAACV+AgAAGse2AAK78gIABnZYAgADaAks=
+Date: Mon, 28 Feb 2022 00:31:15 +0000
+Message-ID: <BY5PR11MB4403C5A0CB42C29B44EE7DCFF4019@BY5PR11MB4403.namprd11.prod.outlook.com>
+References: <CADG7HNSC=p3gY7sEk=uy6wTxSnQ7Nc2ZYv4zkq61=HqoWkKEJw@mail.gmail.com>
+ <CACnMvBZNyUVURFZiHXXN9ri2f05T31cV_CsVTpQaJ+W7n18J2g@mail.gmail.com>
+ <CACnMvBanAhAeoUWgfo=2uG4qm9qYQsw-eVfZpAXUHaGVhfLaVg@mail.gmail.com>
+ <BY5PR11MB4403D48B9528882BFA8C513CF43E9@BY5PR11MB4403.namprd11.prod.outlook.com>
+ <CACnMvBZG8CgDDczTQ1w=NQbADkB+8WFft5tpN_S_VPWjj2tOpQ@mail.gmail.com>
+ <BY5PR11MB44037F0EFFFAB1E30C3EE82CF43F9@BY5PR11MB4403.namprd11.prod.outlook.com>
+ <CACnMvBbN6BZS8qqn0UT+pvLFGE6j5Y1mKtS55UeHpNhxaoVtew@mail.gmail.com>
+ <CACnMvBad8TgMS=Hny6p+p+WZvEX4AoBD3MdDfdXoy7sWnPapSg@mail.gmail.com>
+In-Reply-To: <CACnMvBad8TgMS=Hny6p+p+WZvEX4AoBD3MdDfdXoy7sWnPapSg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+suggested_attachment_session_id: 8d2f97dc-6f51-ee0d-2026-c0ae9b5851d4
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=umnh.utah.edu;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 80a1e5a9-d6a9-4d6e-c789-08d9fa51a15e
+x-ms-traffictypediagnostic: MWHPR11MB1389:EE_
+x-microsoft-antispam-prvs: <MWHPR11MB13893C7C613747F397F9B0F3F4019@MWHPR11MB1389.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fS/b+2pspT/pzIHqBC/Lko6zRUH2HcfQsu5NtLCBeuq9Zn+tmFQkL9eWBV6ZxZqjk1Ww7RCEHd6L6m0PmkMnrs5QplQqhOigiYQDep2nHlwo8OxjbiujCM2IWCSjSHiR9kVIahJ/hRBX8kYtqpNP0Y8bRNUZFQiYhLwDf+TbuV+vTwxqJWwzXJfs4xBdYteoMRMLuTsmjfyaITah1+KHzRfQFwTn9At2moKZ+yq+7tb+3Z8B6z6iIONbgUmM27cBQQb8mQHJ2qmuWYhbk3IS7n52Ke35Ec2n9vXHHpTQy95oUbAztFINc7IxVZboM5U0OPPCWAIDJlBf6AXsTA4E/eAZs2ISydug2eHSA2TyWG2o71Y8B2sNrnKF4KXhHGKnusijUPjGrg69i0xpw7+avIqg7WZiGo1a/t3d8e/CFKVS3szGO8FtbDPmRPVIjuAfy5k6odyLGRvCUkkRg2ccXu818VRi7G461+0LY2C2nG2ArgHWTZO54QBr9BULG2F5y5TKqxI9C/QBJ2Fn8LBuwZcU/KZWPXC4c7MqkQwmOdM91nTaRkmTCKCs0Y1dRStE9FLMGSxyEgdZm9UROZSoWY6DXWxeLZqA1DYb2BZFZ2VPD00Vb1beyNYPAvbi6BbFAzBGRMCW1xoNc+vLwkDbMOOOXRsI7uxqhIAjyxZKFDKSrQKBNWa1kGDPgV5NVrcdUQEk7ZI3lgNChKKjoh75Ow==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR11MB4403.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(66556008)(6916009)(66446008)(66476007)(71200400001)(508600001)(33656002)(450100002)(64756008)(76116006)(4326008)(38070700005)(66946007)(86362001)(54906003)(8676002)(316002)(5660300002)(7116003)(8936002)(52536014)(2906002)(186003)(9686003)(786003)(75432002)(55016003)(122000001)(38100700002)(7696005)(6506007)(53546011)(3480700007)(107886003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?foITKIVwDMF5IzxBl9DRZm9FuHPfumM/SxHmlUz5Ex4UxforcdmPNFlJ?=
+ =?Windows-1252?Q?iKTAE7vfuHwyExGrhahTXjWxlY2ffkoBeG8pMuEC9U7JZRraylYaZegi?=
+ =?Windows-1252?Q?BXY2zyMSyUeAP0wQRRXxRkl0mY3nXur5kTNeuN9VQJpUdF7gw0L7PE4H?=
+ =?Windows-1252?Q?28B0wXnLPoazNXejViZ1mLCatfTrAwxHzIp12Yn9RdMxetG8+HZi+TJp?=
+ =?Windows-1252?Q?j10OF35sMiB+PhjAirh9J7BPSQQKBp7uApgNwwGBpafS29Dk7K1qY8Ep?=
+ =?Windows-1252?Q?mL4cEVjpZCE1QG2EOaKC+LpQR2SJ+DK+0mkRhfPk9xT/2bJULYF22jTo?=
+ =?Windows-1252?Q?os1Fnc11ZSxK3XdGejhCVczn5YVUYJsTyGcozlCX/Hxhf3qYLysyKd+L?=
+ =?Windows-1252?Q?TtWvWKlJ+Z28M70hy1IDFJBXwseaB93w8FHp4IsvLWCN1DFC6Eo2nV8z?=
+ =?Windows-1252?Q?nQX0GllMeNo5hqYipHMa5Fj5HcsSePxjvym1CjHx15gJuAwdlDqnscE7?=
+ =?Windows-1252?Q?tGDjlNsNrNgfw1YkVixkJ+bXZym5HslFokVG8hyxnwng3JUbFr/FWIPh?=
+ =?Windows-1252?Q?g0pNE8hD5zVI/q8BEeFYgB2+KXbhhijIBxGYnH5pBwILnLvQFEheJnsg?=
+ =?Windows-1252?Q?R5zAb4znZygAl0y0GLnf+ExmI2Bvs041ytm4xAVofMASJMr/5C1CepAI?=
+ =?Windows-1252?Q?a5fqlEv5D+8LS3vZ5Od9K7nvdQ66CPK8J3vwm0ruXMiQjpu1y6Hke5QO?=
+ =?Windows-1252?Q?6iDtDs4eNKVyH9C0upf8f2MVIlHM0K+H7vZYOp8szVmvD1STQvPb6SRz?=
+ =?Windows-1252?Q?pO4bO6WU7PPYH/+n3oYv/YAiI6Jlocu+dI1pIPRz2Y4AaREVzJYbEsnS?=
+ =?Windows-1252?Q?WyEA68G0Fvfe2DXJ5WUzwpVdwBZzKrHWaze08VhiHm66SrqQFyqHYRtK?=
+ =?Windows-1252?Q?2y/orOVLY6/1zWSrTHXJBpvVrgNf0TlGg4sAINlmC5WSJwpVUPeLflIM?=
+ =?Windows-1252?Q?9w5ywioDXjBrve0WBuKkg1eEHH0Js7Ylgz6vb/a3v3lEOTR4z7i8OIAo?=
+ =?Windows-1252?Q?XCvG8SJXlmdzLaeQW8g2yTSCeym/hd9iAoBMa8mu//Nz5aFKWrEnfNyd?=
+ =?Windows-1252?Q?iiUNmdHIYrc7XFUqR9sNx5evy/7jONCoDNKxGPkYW/EWC4E+JSjPnQxa?=
+ =?Windows-1252?Q?kKAmYRYcdXyfQSQ7eyc3Yct1Ld1i5UxoTVIXgbmt+fl1w2/5pNIF7PRA?=
+ =?Windows-1252?Q?hUik2xOIbMYcy9RBjt9zT+8lQsryESDwQ2xWJ/XUko+CQgU3svzQqgnY?=
+ =?Windows-1252?Q?7ROVolvGfTujWaNSIxC3znDZzHVLr/pV1+7ThDGMtblFvGP1/cSzTdt9?=
+ =?Windows-1252?Q?iG4g78lgUWJkYZhqcfC1XDGP68qbRQQ3GkUpK37/WxP0ayE4RDmkusC1?=
+ =?Windows-1252?Q?ZBnrxdGC8vCvaHelToRV+PleIJ+VmLYEF7PpD9egCeSjPlh9UtqHT326?=
+ =?Windows-1252?Q?BCrIDfAS1eLxyv1BwHeAXhxybg68M+TdjpU2WEPjgkrOIuy3TFSdLxCz?=
+ =?Windows-1252?Q?la0jAu0e7+5rO6hJJSdgDOs2/mhpvN/8aLbAxnFoL9YsENxxRXsI+zkd?=
+ =?Windows-1252?Q?CtpGZ1KWQId3dz79QtmSWYhHJQE1ZhTFcsnDSiHfu6RnruyseM1nb+4v?=
+ =?Windows-1252?Q?XXHs4DU7fbU8khBecr43g+WCzUMQVU/TE/61ACBB7Pr2dh35v+J4EcyD?=
+ =?Windows-1252?Q?DRxKL/EIWInGulqR/qdpWGu7tz9pRqqYCd65Qs1FuDnGl1B2fMCmVn5b?=
+ =?Windows-1252?Q?iRni9vwbH9kj4bV+jvPPn5owMy0=3D?=
+Content-Type: text/plain; charset="Windows-1252"
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR11MB4403.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 80a1e5a9-d6a9-4d6e-c789-08d9fa51a15e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2022 00:31:15.5336
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5217e0e7-539d-4563-b1bf-7c6dcf074f91
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: niY+xVu8B7y1KQ+HMyPtuF2oJTp0Nd8KTmIYaob4R0cbTCpoXNZBrW01sWLayZtAZsslRQapzFvmNswAVORkuQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1389
+X-OriginatorOrg: umnh.utah.edu
+
+Certainly!
+
+________________________________________
+From: Mike Taylor <sauropoda@gmail.com>
+Sent: Sunday, February 27, 2022 4:30 AM
+To: Randy Irmis
+Cc: Mathew Wedel; Carrie Levitt-Bussian
+Subject: Re: Thank you!
+
+BTW,., is it OK to cite this as pers. comm.?
+
+-- Mike.
+
+On Sat, Feb 26, 2022 at 10:50 AM Mike Taylor <sauropoda@gmail.com> wrote:
+>
+> Thanks, Randy, that's helpful.
+>
+> -- Mike.
+>
+> On Sat, Feb 26, 2022 at 12:28 AM Randy Irmis <irmis@umnh.utah.edu> wrote:
+> >
+> > I don't have a lot of regrets from the epic ten-day Utah experience back in 2016, but one would be that we spent such a stupidly short time at the Natural History Museum of Utah.>>
+> >
+> > Haha, well, to be fair, our sauropod holdings are not super diverse compared to some other collections - they're quite dominated by Camarasaurus from Cleveland-Lloyd.  Although we do have more and more Cedar Mountain Fm material courtesy of Jim Kirkland, etc.
+> >
+> > <<OK, so no true neck material in that specimen — as you probably guessed, that was my main interest.>>
+> >
+> > Well, the neck is based off of real material, but the ROM skeleton rather than ours.  I don't *think* any UMNH material was in the neck, but you might want to wait for Carrie to be back in the office to be sure.
+> >
+> > <<So to be clear, there is no specimen number for the mount as a whole.>>
+> >
+> > Correct, because its a composite of ROM and UMNH casts.
+> >
+> > Regards,
+> > Randy
