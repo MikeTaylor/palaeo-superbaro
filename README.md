@@ -17,7 +17,7 @@ Interesting part of this respository:
 Anyone is welcome to [file issues](https://github.com/MikeTaylor/palaeo-superbaro/issues).
 
 **Note to self.**
-We made a start on this project before. The directory is called `jjb` and it's in Dropbox.
+We made a start on this project before. The directory is called `jjb` and it's in the `mike-matt` shared Dropbox folder. It needs to be merged into the current project.
 
 ## Copyright and License
 
