@@ -14,8 +14,6 @@ Interesting part of this respository:
 * [Documentation about the AMNH's 1990 rearing _Barosaurus_ mount](amnh-mount)
 * [Documentation of permission to cite pers. comms.](permissions) (OK, this one is not interesting, but I guess it's necessary)
 
-I've written other open-process papers ([the Archbishop description](https://github.com/MikeTaylor/palaeo-archbishop/), [the vertebral orientation paper](https://github.com/MikeTaylor/palaeo-vo/)) in Markdown, so that they appear formatted on GitHub ([example](https://github.com/MikeTaylor/palaeo-vo/blob/master/vo-manuscript.md)). But that raises a collaboration barrier, so we'll do this one in LibreOffice.
-
 Anyone is welcome to [file issues](https://github.com/MikeTaylor/palaeo-superbaro/issues).
 
 **Note to self.**
