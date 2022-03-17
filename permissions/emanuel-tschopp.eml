@@ -1,0 +1,228 @@
+Delivered-To: sauropoda@gmail.com
+Received: by 2002:a7b:c8da:0:0:0:0:0 with SMTP id f26csp1272159wml;
+        Thu, 17 Mar 2022 02:52:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkRbmVQpk1JBBnfQZmimzVnnMBGryNupjrCzVx5fcShpDCQpq1tBdGXi2KirVn22cWqKiW
+X-Received: by 2002:a17:906:1b4e:b0:6da:d7ed:f3e0 with SMTP id p14-20020a1709061b4e00b006dad7edf3e0mr3586939ejg.721.1647510752411;
+        Thu, 17 Mar 2022 02:52:32 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1647510752; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=GVQkrWzxzCQ6HYKilA4VvK8geVsj8AND4i5fL1REgbcet9JJcNWZQoh5VViDZkIZvs
+         RRpWcZuJSdjDm4uk6GZHCBAjJzdZV840mVbkM64AM/qf+BjwWFGT5U1AwHjuhNgrAVNy
+         WrFEv/r6SVi6y7PZyY9PB4m3JP/WBZnwfyKtiUTSp4+3kVUam3KmMrEVcxZuEZC2/HGm
+         pBp+TTES9gRzsDbqGXefPaV6tuYx0dCgu4EKDhrcYXxTWAZc12Dk15Fr6e5l7hlE8G2E
+         pwhjN5DyVO9mNLjH3K2istvUHqqpwn9nVa8DUsQ1+h/F4aH8mlv8XjI7eN1zYQbtlOFr
+         90bA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:subject:to
+         :from:dkim-signature;
+        bh=KIJJUf2UUA7sla92YJ7h1iiZ6ha7D8GXh4nTZsD+KiQ=;
+        b=YkuF09kWgga5HPMC80sLwsDwwTAgjjJ4Xz3fysgali731t+wTzeKBOAJVkIiAP3H2+
+         rlpm0Z6g11KaL1v6VSZae+6ptDvmsP0Z2laMjTv/j7FheV0si4h/bjdZjtNm2JUDXTLB
+         rjoJZ7SYDASrbaj2P4WqYpM6o7iOuEg3mEgjIMPvEIz44wCR5Kb18mkucg9jyJwRxS7Z
+         AJEN+S+hU+Ke+YptQbfEhT1u/qmuciRuFHM3FU7G+lrEmUMMazLNf4x1c9567iUXqYRw
+         EdCtqdHQ/2AEngFuNOEUvNlndHcCA47emuKczqOm49QNznfKAjK/nD9w1xy4Tc9e6O+k
+         dybw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amnh.org header.s=selector1 header.b=Iq8QMhtM;
+       arc=pass (i=1 spf=pass spfdomain=amnh.org dkim=pass dkdomain=amnh.org dmarc=pass fromdomain=amnh.org);
+       spf=pass (google.com: domain of etschopp@amnh.org designates 2a01:111:f400:7e89::70f as permitted sender) smtp.mailfrom=etschopp@amnh.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=amnh.org
+Return-Path: <etschopp@amnh.org>
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (mail-mw2nam10on2070f.outbound.protection.outlook.com. [2a01:111:f400:7e89::70f])
+        by mx.google.com with ESMTPS id n10-20020a1709061d0a00b006dbefc648besi2639483ejh.83.2022.03.17.02.52.31
+        for <sauropoda@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 17 Mar 2022 02:52:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of etschopp@amnh.org designates 2a01:111:f400:7e89::70f as permitted sender) client-ip=2a01:111:f400:7e89::70f;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amnh.org header.s=selector1 header.b=Iq8QMhtM;
+       arc=pass (i=1 spf=pass spfdomain=amnh.org dkim=pass dkdomain=amnh.org dmarc=pass fromdomain=amnh.org);
+       spf=pass (google.com: domain of etschopp@amnh.org designates 2a01:111:f400:7e89::70f as permitted sender) smtp.mailfrom=etschopp@amnh.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=amnh.org
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Oe0evV6rFu+CImYSCtIjUq6zi++vpeNzziQ2jq5gqwPymnPsNoWiokhM1xPV/jhmoaeXSRcbqj3tWsycHnUs35X9B9eTLwItIAoi5i6s5/LFwsQ1snJG7WMG64xHkXaTknXll2ng/nUNbFyP6oNCPVgLjN0qKYyuJ/K6y3TuR4fNzJTB5tVtq6DixAGJqtQ8QFIoufXwRAEFbeui/ZWK/bLQ0OC8gJjvyNFiHew+Hp6121Bvc3vnJs21BcO+H1poDpiBw/uSp81ZIu0Z68BsaFexLQEQ0xQnOVVsNdfNoZBK30QzNwYaVU5ijGSWSfoFVlhYEdDOxU23roGxC+AFgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KIJJUf2UUA7sla92YJ7h1iiZ6ha7D8GXh4nTZsD+KiQ=;
+ b=BTdQRhSaoZXrxDClRpN+HjN4VpWDR4crv3IKW4sjDSjHg3Gy1x6FxXOjVYDsm2TFSWxkSc6mPXEIHGm70RkL8a87cOu993ZQPkdMDs38MdPv9gNU07OjZtftw4dfYq02Wch2zbZkmzaSBixHs9DebNpuEmJNpKzouHROBMV2CneKk5IwCe6VBE73HQKkhRk+4JRXuGMKaEeSLpDYAylxTp5dvYg5N58nKEOFaoRi5bd/XHyH0hd6AnMT4BwqjsmnfQaWg0NuBbIloJVu59ysph9d8PYZdhZ531CBeFR8t7kpGjbCu6bgQe6Apa28Ch4dtCnNan427XFtIIhWH8HC8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amnh.org; dmarc=pass action=none header.from=amnh.org;
+ dkim=pass header.d=amnh.org; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amnh.org; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KIJJUf2UUA7sla92YJ7h1iiZ6ha7D8GXh4nTZsD+KiQ=;
+ b=Iq8QMhtMZa9vTrTW9Dl6jDJtDid38ZviPc5KVBNyGHQoW24jNBAW/6Xf1yvpeDIlX+rF5dMC9wl3Nx37opi3u6aKuSACg7rGU9JdmQ4vKLhEFsbM6NMcVQkijUOilzxHL+bkgEpCZch6+ppsXNic4Xcd6BJnXnEsJQe/PLGw0hzfI1Uv8USo+ecxmxSibGii1YxecmZCBbK8Jrsg8hzdKkiPS923ZkUa4xEWjMZiFN9EPN6tGfTKUxDVNdLr7DsEFJU/qlUx8Dm2rpwmBkATfIBFJuBy+95H1ImcV8LPm7ebBwq5zV1GmpEQzbh5AY9/UqdH6AX2mPHspazmjsidnQ==
+Received: from PH0PR14MB4423.namprd14.prod.outlook.com (2603:10b6:510:1::11)
+ by BYAPR14MB3254.namprd14.prod.outlook.com (2603:10b6:a03:ae::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5061.26; Thu, 17 Mar
+ 2022 09:52:27 +0000
+Received: from PH0PR14MB4423.namprd14.prod.outlook.com
+ ([fe80::2986:5011:110b:6a0]) by PH0PR14MB4423.namprd14.prod.outlook.com
+ ([fe80::2986:5011:110b:6a0%4]) with mapi id 15.20.5081.017; Thu, 17 Mar 2022
+ 09:52:27 +0000
+From: Emanuel Tschopp <etschopp@amnh.org>
+To: Mike Taylor <sauropoda@gmail.com>
+Subject: RE: Barosaurus cervical photos
+Thread-Topic: Barosaurus cervical photos
+Thread-Index: AQHYNJdLAMXeZ2jMXU6zIomy3DjHn6y537qAgAAQwICAAAoh0IAAEu0AgAlQZkA=
+Date: Thu, 17 Mar 2022 09:52:27 +0000
+Message-ID:
+ <PH0PR14MB442354746F08596F5B0EBA89A2129@PH0PR14MB4423.namprd14.prod.outlook.com>
+References:
+ <CACnMvBbjp3BrineATrcPgLtctr3zbXbD25ZFvAEOe7Z0v9DZcg@mail.gmail.com>
+ <PH0PR14MB44235EF12CEFB0386AED53A5A20C9@PH0PR14MB4423.namprd14.prod.outlook.com>
+ <CACnMvBafSzSsL5R6ROBQKwBy=xaFxFRNgW5znzTQQ_dX53MEzA@mail.gmail.com>
+ <PH0PR14MB44232B66020A12F61FC04FAFA20C9@PH0PR14MB4423.namprd14.prod.outlook.com>
+ <CACnMvBZS_7ZNQ5=TtVR=gENR2LJUe4D2v1xXPOVE+hH20JXnMw@mail.gmail.com>
+In-Reply-To:
+ <CACnMvBZS_7ZNQ5=TtVR=gENR2LJUe4D2v1xXPOVE+hH20JXnMw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amnh.org;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8e36b07e-f15a-43bb-bc1a-08da07fbd883
+x-ms-traffictypediagnostic: BYAPR14MB3254:EE_
+x-microsoft-antispam-prvs:
+ <BYAPR14MB32542B4B0F22C599FC6A56EAA2129@BYAPR14MB3254.namprd14.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ QbTfn4fcaWRoXZKRAA74udR/NUeInU5uHLe1MJpQBmXThjTKlDOj2dcM6ovfDVRr9qUv3ULnZisaQLpkVO7F/DuGqgMipmbLIqFVadS2wHwqxbHnNvaZ6NDgGXBoDMxmMdJXr5l3TJSNBeuEXIT4awf3Yt4CVU7iqWQsCo8+yvw9CWo3SOm24mXnpTjtiHmxTOKBa47Tbpr3f+X7Nvinilzd7IUTpvWcxeCepdFn1JcHe/d/7YDCl8jb7qTr1ooDZFbG9sUS1pzDPglJwvv+n/YeLka91kijkJxPVDw8RtIgEeZYcy4tIVXkN6L4jjIR7fu0HZqsEK6+r9awNPRO6N2+RFtqUy4O7L1+tPERNpX92KEL23ebj2MEipf8tsWyl/e+9Zpfgvrcmgj19w+F1EcG/6vtNi3jOYWdn5akYF8kwpcnR0M+Y1409jJ+zdhHm7AMqpQV6COXMJlYc8qSwzOHYufYlTPNlC1wyLZAJn9Hlmud4pleGI8bK79sAE6xlFTLDmXXv/Ag8k3V9wrRv4/zycWNGvYwfY+kyXatvX2FgQYe9ZXppjWQCWKSy0CJaqUIfCV13/m3dEvWbBp2uBUTYTw0WLEsr3HOTC/N76p38FnFLPd+B/8Iy8dJyClLHNi7jkx21MN4kI5l0im/rh6NaSfSxCqyL2r/ZHQqq5rA5MhZZPKRTrIj4joM9iVw7IF/EROiMT2+4d0qC7ddW2vraA6QpX/CYOOJaw5nzgyFxyxob+ytuTHMyYt6RhnqL4Q+JYkDy8pN3rR/Aym3BMGv/wC9QJ25AN9KJ4eLte6RVHweKPh/mS5lXndDwjIPKUAqFL80tk3/AyRg9Y+BPw==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR14MB4423.namprd14.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(55016003)(9686003)(2906002)(6506007)(53546011)(7696005)(7116003)(3480700007)(83380400001)(33656002)(186003)(26005)(966005)(38070700005)(66476007)(508600001)(66446008)(6916009)(86362001)(66946007)(786003)(8676002)(76116006)(64756008)(316002)(66556008)(71200400001)(166002)(9326002)(8936002)(52536014)(5660300002)(38100700002)(122000001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?us-ascii?Q?80Clav5NR4nzpW18mM/MA2ZRqnS3Lzf+qDFhlsaLLr8kLEiES0DrGQ7kxn+3?=
+ =?us-ascii?Q?0ujPr147lPRQ/X4BomuU1dFN0x9eh6+Q5NHTVZFq9GR1z9n/aX7j086vMP10?=
+ =?us-ascii?Q?9LOLke9cOUfW1cdNuHAm/ZejPiapOCVg6hG8Ef73OKZkfiV0mYXalFlcZTjM?=
+ =?us-ascii?Q?ghP7RWZbFl7Oc8Dru1tAtM0Y3+jNbCXnyKxqz8zSyu0hmXh1nA9HVQKtItDr?=
+ =?us-ascii?Q?Kq60PfVr2hgDrCTVJayogk0K0n7o9edFDXI3IJNr7+EIFMe6q/dXiIoFGmVS?=
+ =?us-ascii?Q?v2Cvm7CMDeBpNIrWY/lOmu3DRvsDs8dfEWzqqRwz7QPOQ/vN+uALkTlMnuag?=
+ =?us-ascii?Q?QHOVC11sMjs2WliUOJ8b/fyv0tjpdHh6noDE4xFGCkDsTMZwAH8jPct8357u?=
+ =?us-ascii?Q?TcMJm4Jl2duo70ZSQcr4MXgnkpUASjsp+EJZBfTtju4eeIKKuhwMMKn+U77m?=
+ =?us-ascii?Q?U1RAOnmXdIw2j56F7y9eOFAKTAthBX4+pP0IlYmXHS6oMhuLJRbTs+6Bz9ol?=
+ =?us-ascii?Q?Ld/c9tZVxFJy3fO1MKmacC6nEkolPdRefY5hK1xqqzEXicolv5AJSrjpETmp?=
+ =?us-ascii?Q?YgI7DIt7IuWghZfNdEKUqg+Si5KYBC+n4oAuNpf+DSl585mpzWzlmz4GDF+X?=
+ =?us-ascii?Q?OYxf92QnlqE9Qm/U3Qt5oIK9unxArkZ035bia+65+j/qzXrUzsOxzb21NMgr?=
+ =?us-ascii?Q?Thn13sjN9QFjU9XFhLhfR/DGkKFe05PDKqACZyYJpesL/A88WcOb8JyZuuhP?=
+ =?us-ascii?Q?kI4/7NzB9hNLMs7rfPMP+28JzvD4bN4sgDhl0Tc4NkS7yd9+aKqRRWbHoDe2?=
+ =?us-ascii?Q?z9vu4c/fGUnkNLO7Y8QlM9Ntdyoz0v97JCAKva+3N8pjBxJ/Fzx6UOnYeLHW?=
+ =?us-ascii?Q?JMOLTfzWYq3tp0Ej5sw9paCclh+CojQeILjaYXToP2SQJH+7P2C3YxhYNpRa?=
+ =?us-ascii?Q?hdPvRCGR3+jr9st+xLFRc3iLj1OWp8kaNTn/Nlp9X6auqKWBSG7iPU0N9Ciw?=
+ =?us-ascii?Q?itjpNgb5sp/IFNuulfH9ZR0uz5PdjjL+Wjm4/aGyDeKuCfLkRRQJZ2z+nNqs?=
+ =?us-ascii?Q?wIQpp/Bnqu0YwceEt7Y4jG6lGK4NxHG1468EwWrPtUcg+jFnCP0NO6yv4PAZ?=
+ =?us-ascii?Q?ytAOcRYO9Aeuurk3fYF0+hN+ZaTToNoBpNryKhTr+vsJw5xJroDXsE1t6BpR?=
+ =?us-ascii?Q?crfL0ClkgjZoPL5Vh6iBFsWULOGLc6QvjmIR9LtKpgJNkzgSmzvxKfnS9uWI?=
+ =?us-ascii?Q?gEb7uSJrgEYp1l5E3C00eKAWu76+31AYRkRWGIbpvrp2btKO1APtnAvj13vl?=
+ =?us-ascii?Q?Bun1pQw5+lXVWt/N3UjzGfOH7bz3xFzsm8vQmYmDLvJ6YnybYfewfdRJPoYC?=
+ =?us-ascii?Q?1a50shZ7o9ntlZQFZ/Et8rnIcyjA6xIQjqwGANR1J/Xhv3/4lHKd5lYrg0mY?=
+ =?us-ascii?Q?0b3cK6J5UHyKUH/T7GJQ9HRjDXukCcF+?=
+MIME-Version: 1.0
+X-OriginatorOrg: amnh.org
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR14MB4423.namprd14.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8e36b07e-f15a-43bb-bc1a-08da07fbd883
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Mar 2022 09:52:27.3126
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: be0003e8-c6b9-4968-83ae-b34586974b76
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: T8xnUWo5aSFH1gYF3sEF1wUqrbFKWh8UX9YlfQ6T0K+/gZVuWNLiV6VeoAcGZwHFsc1xave9VdlnbI7f8wDmKA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR14MB3254
+X-StripMime: Non-text section removed by stripmime
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+
+Hi Mike,
+
+Yes, feel free to use them with appropriate credit. There are a number of p=
+eople who have to be acknowledged to getting me in there, and helping me wi=
+th photography: Carl Mehling, Mark Norell, Carolyn Merrill, Lisa Kronthal E=
+lkin, and Trenton Duerksen.
+
+Also, please let me know which photo you use where beforehand, so I can tak=
+e a note.
+
+Best,
+Emanuel
+
+From: Mike Taylor <sauropoda@gmail.com>
+Sent: Friday, March 11, 2022 12:30 PM
+To: Emanuel Tschopp <etschopp@amnh.org>
+Subject: Re: Barosaurus cervical photos
+
+EXTERNAL SENDER
+
+On Fri, Mar 11, 2022 at 10:30 AM Emanuel Tschopp <etschopp@amnh.org<mailto:=
+etschopp@amnh.org>> wrote:
+Hi Mike,
+
+Sending by wetransfer now - more detailed info in the wetransfer message.
+
+And that message ..
+
+here's all the photos I was able to take from the presacrals in 2019. Remem=
+ber that we weren't allowed to move the verts, and that the case is very lo=
+w and narrow, so not all views were possible, and many had to be take with =
+a rather wide angle, so there might be some distortion in it. Also, lightin=
+g of course was a problem, but we figured anything would be better than pho=
+tos through the glass, so I hope they will still be useful to some degree.
+
+Holy crap, it's the motherlode! Please, don't apologise for anything about =
+these photos. They are a hundred times better than the tiny scraps I have b=
+een feeding from, namely the terribly tiny stippled monochrome illustration=
+s in McIntosh (2005) and my own photos like this one: https://svpow.files.w=
+ordpress.com/2016/10/amnh-dorsal-view.jpg<https://nam04.safelinks.protectio=
+n.outlook.com/?url=3Dhttps%3A%2F%2Fsvpow.files.wordpress.com%2F2016%2F10%2F=
+amnh-dorsal-view.jpg&data=3D04%7C01%7C%7Cea663f21443145d7cdd308da03528e43%7=
+Cbe0003e8c6b9496883aeb34586974b76%7C0%7C0%7C637825950358766388%7CUnknown%7C=
+TWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0=
+%3D%7C3000&sdata=3DQxE%2BY607nYFfDC8roK%2FIjbOWSHKtrfw0zSXO%2B76nn%2B4%3D&r=
+eserved=3D0>
+
+From the bottom of my heart, thank you.
+
+Would it be OK to use some of these photos in publications? Credited to you=
+, obviously. In particular, they will be really helpful in illustrating the=
+ characters that distinguish Barosaurus cervicals from those of other diplo=
+docids.
+
+BTW., I think Barosaurus cervicals are a fantastic example of how incredibl=
+y misleading either lateral-view or dorsal-view images are when taken alone=
+ -- or even taken together in the absence of a dorsolateral intermediate. O=
+ne would hardly believe the lateral and dorsal images are of the same verte=
+bra.
+
+I wished I could work on the Camarasaurus specimen-level phylogeny, but as =
+it so happens with Postdoc projects, you have to spend much of your time co=
+ming up with new projects for follow-up fellowships, can't finish your stuf=
+f, and are paid to do other research after you move somewhere else... So, y=
+es, we're still working on that, but it's a pain, and extremely slow, and I=
+'m terribly sorry for the paleo world community that this is taking so long=
+, while at the same time being personally annoyed by this situation, which =
+doesn't allow me to put that on top of my priority list.
+
+I totally understand. Given that my Archbishop description is currently 17 =
+years late and counting, I am hardly in a position to criticise anyone else=
+'s delays! Just know that when this work does get done, it will have at at =
+least one avid reader :-)
+
+One thing can be said, though: Camarasaurus is a much bigger mess than dipl=
+odocids, which renders any specimen-level analysis extremely difficult.
+
+Matt and I have both felt for some time that there are multiple genera in t=
+here, but without having spent enough time to arrive at any particular sens=
+e of where the boundaries might lie and which specimens fall together. It w=
+ill be fascinating to see how this pans out when the time is right.
+
+-- Mike.
+
+
+
